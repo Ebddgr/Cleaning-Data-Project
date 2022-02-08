@@ -39,9 +39,7 @@ filtered_data$activity <- activity_desc
 
 #tidy data set with the average of each variable
 #for each activity and each subject
-by_sub_act<- filtered_data %>% group_by(subject,activity) %>% 
+by_sub_act <- filtered_data %>% group_by(subject, activity) %>%
     summarize(across(.fns = mean))
-by_sub_act
-
-
-
+by_sub_act %>%
+    write.table(file = "tidy_data_set.txt",row.names = FALSE)
